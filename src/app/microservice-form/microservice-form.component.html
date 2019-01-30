@@ -1,0 +1,124 @@
+<div class="container">
+  <h1>Microservice Deployment</h1>
+  <form  (ngSubmit)="onSubmit()" #microserviceForm="ngForm">
+    <div class="form-group">
+      <label for="serviceKey">Service Key</label>
+      <input type="text"
+             name="serviceKey" 
+             class="form-control"
+             id="serviceKey" 
+             [(ngModel)]="model.serviceKey" 
+             required>
+    </div>
+
+    <div class="form-group">
+      <label for="serviceId">Service Id (Optional)</label>
+      <input type="text"
+             name="serviceId"
+             class="form-control"
+             id="serviceId"
+             [(ngModel)]="model.serviceId"
+             required>
+    </div>
+
+    <div class="form-group">
+      <label for="basePath">Base Path</label>
+      <input type="text"
+             name="basePath"
+             class="form-control"
+             id="basePath"
+             [(ngModel)]="model.basePath"
+             required>
+    </div>
+
+    <div class="form-group">
+      <label for="hostProvider">Host Provider</label>
+      <select class="form-control" 
+              name="hostProvider"
+              id="hostProvider" 
+              [(ngModel)]="model.hostProvider"
+              required>
+        <option *ngFor="let opt of hostProviders" [value]="opt">{{opt}}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="host">Host</label>
+      <input type="text" 
+             name="host"
+             class="form-control" 
+             id="host"
+             [(ngModel)]="model.host"
+             required>
+
+    </div>
+
+    <div class="form-group">
+      <label for="port">Port</label>
+      <input type="number" 
+             name="port"
+             class="form-control" 
+             id="port"
+             [(ngModel)]="model.port"
+             required>
+
+    </div>
+
+    <div class="form-group">
+      <label for="scheme">Scheme</label>
+      <select class="form-control" 
+              name="scheme"
+              id="scheme" 
+              [(ngModel)]="model.scheme"
+              required>
+        <option *ngFor="let opt of schemes" [value]="opt">{{opt}}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="runtime">Runtime</label>
+      <select class="form-control" 
+              name="runtime"
+              id="runtime" 
+              [(ngModel)]="model.runtime"
+              required>
+        <option *ngFor="let opt of runtimes" [value]="opt">{{opt}}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="args">Args</label>
+      <input type="text"
+             name="args"
+             class="form-control"
+             id="args"
+             [(ngModel)]="model.args"
+             required>
+
+    </div>
+
+    <div class="form-group">
+      <label for="environment">Environment</label>
+      <input type="text"
+             name="environment"
+             class="form-control"
+             id="environment"
+             [(ngModel)]="model.environment"
+             required>
+
+    </div>
+
+    <div>
+      <label for="file">File Upload</label>
+      <input type="file" 
+             name="file" 
+             id="file" 
+             (change)="fileChange($event)"
+             accept=".jar, .war"
+             required/>
+    </div>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+
+  </form>
+</div>
