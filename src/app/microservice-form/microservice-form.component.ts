@@ -69,7 +69,7 @@ export class MicroserviceFormComponent implements OnInit {
             'port': this.model.port,
             'scheme': this.model.scheme,
             'metadata': this.model.metadata,
-            'runtime': this.runtimes,
+            'runtime': this.model.runtime,
             'args': this.model.args,
             'environment': this.model.environment,
             'filepath': data.filepath
