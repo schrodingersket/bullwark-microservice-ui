@@ -54,7 +54,7 @@ export class MicroserviceFormComponent implements OnInit {
           })
          };
 
-        this.http.post<any>('/microservices/upload', formData, options).pipe(
+        this.http.post<any>('http://192.168.50.129:8001/microservices/upload', formData, options).pipe(
           catchError(this.handleError)
         ).subscribe((data) => {
 
@@ -70,8 +70,8 @@ export class MicroserviceFormComponent implements OnInit {
             'scheme': this.model.scheme,
             'metadata': this.model.metadata,
             'runtime': this.model.runtime,
-            'args': this.model.args,
-            'environment': this.model.environment,
+            'args': this.model.args.split(','),
+            'environment': this.model.environment.split(','),
             'filepath': data.filepath
           };
 
@@ -81,7 +81,7 @@ export class MicroserviceFormComponent implements OnInit {
               'Content-Type': 'application/json'
             })
           };
-          return this.http.post<any>('/microservices/start', postBody, options).pipe(
+          return this.http.post<any>('http://192.168.50.129:8001/microservices/start', postBody, options).pipe(
             catchError(this.handleError)
           ).subscribe(console.log);
         });
